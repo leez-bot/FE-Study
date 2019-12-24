@@ -8,6 +8,9 @@ module.exports = merge(common, {
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin()
   ],
+  optimization: {
+    usedExports: true, // 开发环境配置tree shaking;生产环境默认有此功能
+  },
   devServer: {
     contentBase: './dist',
     hot: true,

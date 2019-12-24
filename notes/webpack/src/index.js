@@ -4,6 +4,14 @@ import Footer from './components/footer/index.js'
 import counter from './components/counter/counter.js';
 import number from './components/number/number.js';
 import { cube } from './common/common.js';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Rnode from './components/reactTemp'
+
+ReactDOM.render(<Rnode />, document.getElementById('root'))
+
+// import _ from 'lodash'
+// import axios from 'axios'
 
 import './index.css'
 
@@ -22,6 +30,9 @@ btn.onclick = () => {
   div.className = 'item'
   div.innerHTML = 'item'
   document.body.appendChild(div)
+  import('lodash').then(() => {
+    console.log(_.camelCase('Foo Bar'))
+  })
 }
 
 new Header()
@@ -37,3 +48,12 @@ if (module.hot) {
     number()
   })
 }
+
+// SplitChunksPlugin测试
+// console.log(_.camelCase('Foo Bar'))
+// axios.get('aaa')
+
+// lazy-loading
+// import('lodash').then(() => {
+//   console.log(_.camelCase('Foo Bar'))
+// })
