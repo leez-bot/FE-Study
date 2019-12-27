@@ -8,6 +8,11 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Rnode from './components/reactTemp'
 
+
+import { ui } from './common/jquery.ui.js'
+
+ui()
+
 ReactDOM.render(<Rnode />, document.getElementById('root'))
 
 // import _ from 'lodash'

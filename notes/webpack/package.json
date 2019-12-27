@@ -1,6 +1,9 @@
 {
   "name": "webpack-study",
-  "sideEffects": [ "*.css", "@babel/polly-fill" ],
+  "sideEffects": [
+    "*.css",
+    "@babel/polly-fill"
+  ],
   "version": "1.0.0",
   "description": "webpack4.0学习笔记",
   "main": "src/index.js",
@@ -28,6 +31,8 @@
     "css-loader": "^3.4.0",
     "extract-text-webpack-plugin": "^3.0.2",
     "html-webpack-plugin": "^3.2.0",
+    "jquery": "^3.4.1",
+    "lodash": "^4.17.15",
     "mini-css-extract-plugin": "^0.8.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -40,7 +45,6 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
-    "axios": "^0.19.0",
-    "lodash": "^4.17.15"
+    "axios": "^0.19.0"
   }
 }
