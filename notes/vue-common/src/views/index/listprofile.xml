@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<operation optKey="profile" optUrl="/rest/ems/hss/131?NodeId=32" actionId="3" nodeId="32" optMethod="get" authUrl="/rest/api-token-auth" optName="查询策略规则集合配置" originDisplay="s1,s2,s3" nonEmpty="">
+    <param id="s1" paramKey="profid" disName="用户模板ID" datatype="int" widget="input" tip="取值范围:1至32。" default="">
+        <range min="1" max="32"/>
+    </param>
+    <param id="s2" paramKey="PageSize" disName="每页记录数量" datatype="enum" widget="selector" default="">
+        <item value="50" name="50"/>
+        <item value="100" name="100"/>
+        <item value="150" name="150"/>
+        <item value="200" name="200"/>
+    </param>
+    <param id="s3" paramKey="PageNo" disName="页码" datatype="int" widget="input" tip="取值范围:1至4000。" default="">
+        <range min="1" max="4000"/>
+    </param>
+</operation>

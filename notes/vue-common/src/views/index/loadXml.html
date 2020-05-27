@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getxmlDoc (xmlFile) {
+            let xmlDoc;
+            let xmlhttp;
+            if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp=new XMLHttpRequest();
+            } else {// code for IE6, IE5
+                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.open("GET",xmlFile,false);
+            xmlhttp.send(null);
+            xmlDoc = xmlhttp.responseXML;
+            let params = xmlhttp.responseXML.getElementsByTagName('param')
+            let dataResource = formatData(params)
+            console.log(dataResource)
+            return xmlDoc;
+        }
+        function formatData(params) {
+            let dataArr = []
+            for (let i = 0; i< params.length; i++) {
+                let keys = params[i].attributes
+                let obj = {}
+                for (let j = 0; j < keys.length; j++) {
+                    let _key = keys[j]
+                    let key = _key.name
+                    let val = _key.value
+                    obj[key] = val
+                }
+                if (params[i].children.length) {
+                    obj.children = formatData(params[i].children)
+                }
+                dataArr.push(obj)
+            }
+            // params.map(item => {
+            //     let keys = item.attributes
+            //     keys.map(key => {
+            //         dataArr.push({
+            //             key: key.value
+            //         })
+            //     })
+            // })
+            return dataArr
+        }
+        getxmlDoc('listprofile.xml')
+    </script>
+</body>
+</html>
