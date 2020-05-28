@@ -1,3 +1,5 @@
+// 来源：https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/98
+
 class LazyManClass {
     constructor(name) {
         this.taskList = [];
