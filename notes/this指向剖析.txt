@@ -1,0 +1,31 @@
+参考链接：https://juejin.im/post/5b9f176b6fb9a05d3827d03f
+四种this绑定方式：
+  1、隐式绑定；
+  2、显式绑定；
+  3、new关键字绑定；
+  4、window绑定
+ 
+1、隐式绑定
+  通过小数点(.)进行绑定，函数this指向.左侧对象
+  example:dog.eat()  ====> eat()函数里面的this指向dog对象
+2、显式绑定
+  通过.bind/.call/.apply进行绑定，函数里的this指向对应绑定函数的第一个参数
+  example:
+  var people = { name: 'lee', age: 25 }
+  function sayName(...arguments){
+    alert(this.name) // 'lee'
+  }
+  sayName.call(people, arguments)
+  区别：
+  call参数传递为（a,b,c,d),apply参数传递格式为([a,b,c,d]),bind返回一个新的函数，不会立即执行，要手动执行
+3、new绑定
+  函数里面的this指向new出来的新对象
+  example:
+  function User (name, age) {
+    this.name = name
+    this.age = age
+  }
+
+  const me = new User('Tyler', 27)
+ 4、window绑定
+    以上方法除外的this会被绑定到window对象上(严格模式下依然不会)
