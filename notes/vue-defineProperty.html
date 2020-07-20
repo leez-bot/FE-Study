@@ -7,24 +7,40 @@
   <title>Document</title>
 </head>
 <body>
-  <input id="input" type="text" />
-  <div id="text"></div>
+    <input type="text" id="input">
+  <p id="text"></p>
   <script>
-    let input = document.getElementById('input')
-    let text = document.getElementById('text')
-    let data = { value: '' }
+    // 方法1： vue 劫持defineproperty方式
+    var input = document.getElementById('input')
+    var text = document.getElementById('text')
+
+    let data = {
+      value: ''
+    }
     Object.defineProperty(data, 'value', {
-      set: function(val) {
-        text.innerHTML = val
+      get: () => input.value,
+      set: (val) => {
         input.value = val
-      },
-      get: function() {
-        return input.value
+        text.innerHTML = val
       }
     })
-    input.onkeyup = function(e) {
-      data.value = e.target.value
-    }
+
+    input.addEventListener('keyup', e => data.value = e.target.value)
+
+    // 方法2： 使用es6 proxy API劫持
+
+    let proxy = new Proxy(data, {
+      get(target, property) {
+        return target[property]
+      },
+      set(target, property, value) {
+        target[property] = value
+        input.value = value
+        text.innerHTML = value
+      }
+    })
+
+    input.addEventListener('keyup', e => proxy.value = e.target.value)
   </script>
 </body>
 </html>
